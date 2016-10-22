@@ -1,91 +1,129 @@
-// Decalaring and intializing variables
-var x = 3;
-var y = 9;
+// Creating empty Arrays
+var arr = [];
 
-// using arthmetic operators and Math libary functions
-console.log(x+y);
-console.log(Math.sqrt(y));
-
-//Decision construct
-// if statement
-var mid = 25;
-var high = 50;
-var low = 1;
-var current = 33;
-var found = -1;
-if (current < mid) {
-mid = (current-low) / 2;
-console.log(mid);
+// Writing Arrays
+for(i=0; i<10; i++) {
+    arr[i] = i; 
 }
 
-//if-else statement
-else {
-    console.log("current is greater than mid");
-}
-
-// Switch statement
-var monthNumber = "1";
-var monthName;
-switch(monthNumber) {
-    case "1":
-        monthName = "January";
-        break;
-    case "2":
-        monthName = "Feb";
-    case "3" : 
-        monthName = "March";
-    default:
-        console.log("Bad Output");
-}
-
-console.log(monthName);
-
-// Repetition constructs
-//while loop
-var number = 26;
-var answer = 0;
-var i=1;
-while(answer != 260) { 
-    answer = number * i;
-    i++;
-    console.log(answer);
-}
-
-// using for loop
-var arr = [
-    "Hello World",
-    function () {
-        console.log("I am a Function");
-    },
-    {
-        greet: "Hello"
-    }
-]
-for(var i=0; i<=2; i++) {
+//Accessing Arrays
+for(i=0; i<arr.length; i++) {
     console.log(arr[i]);
-    if(i==1) {
-    arr[i]();
-    }
-    else if (i==2) {
-        console.log(arr[i].greet);
-    }
+}
+//Creating arrays from string
+var sentence = "The world is very beautiful";
+var words = sentence.split(" ");
+for(i=0; i<words.length; i++) {
+    console.log(words[i]);
 }
 
-// Recursive functions
-function factorial(number) {
-    var product = 1;
-    for (var i=1; i<=number;i++) {
-        product = product*number;
-    }
-    return product;
+// Assigning one array to another through reference
+
+var arr = ["Hello","Jim","How","are","you"];
+var arr1 = arr;
+console.log(arr1[2]);
+arr1[2] = "Who"; 
+console.log(arr1[2]);
+
+// copying one array to another by value
+
+var arr2 = [];
+for(i=0;i<arr.length;i++) {
+    arr2[i] = arr[i];
 }
 
-console.log(factorial(5));
+console.log(arr2[2]);
+arr2[2] = "Who"; 
+console.log(arr2[2]);
 
-// Creating objects in javascript using function constructor
-var Checking = require('./checking');
-var checkingAmount = new Checking();
+//Searching the elememt in the array
+var names = ["Sid", "Jaspal", "Ram", "Sham", "John", "David"];
+var findName = "David";
+var position = names.indexOf(findName);
+console.log(position);
 
-console.log(checkingAmount.deposit());
+//Converting array to string
+var nameString = names.join();
+console.log(nameString);
+
+//using splice and concat methods in array prototype
+
+var concatArray = names.concat(arr);
+console.log(concatArray.length); 
+var spliceArray = concatArray.splice(3,4);
+console.log(concatArray.length);
+console.log(spliceArray.length);
+
+//Removing elements from an array
+console.log(names.length);
+names.pop();
+console.log(names.length);
+
+// Creating two dimensional array in javascript
+Array.matrix = function(numrows, numcols) {
+    var arr = [];
+    for(var i=0; i<numrows; i++) {
+        var columns = [];
+        for(var j=0; j<numcols; j++) {
+            columns[j] = j;
+        }
+        arr[i] = columns;
+    }
+    return arr;
+}
+var twoDemArray = Array.matrix(3,3);
+console.log(twoDemArray[2][2]);
+
+// Jagged arrays: Many programming languages have
+//problems handling jagged arrays, but JavaScript does not since we can compute the
+//length of any row.
+
+var grades = [[89, 77],[76, 82, 81],[91, 94, 89, 99]];
+
+for (var row = 0; row < grades.length; row++) {
+    for (var col = 0; col < grades[row].length; col++) {
+        console.log(grades[row][col]);
+}
+}
+
+//Array of Objects
+var checking = require('./checking');
+
+var checking1 = new checking(1000);
+var checking2 = new checking(5000);
+var checking3 = new checking(7000);
+
+var checkingArray = [checking1, checking2, checking3];
+
+for(var i=0; i < checkingArray.length; i++) {
+    console.log(checkingArray[i].balance);
+}
+
+//Arrays in object
+function weekTemps() {
+this.dataStore = [];
+this.add = add;
+this.average = average;
+}
+function add(temp) {
+this.dataStore.push(temp);
+}
+function average() {
+var total = 0;
+for (var i = 0; i < this.dataStore.length; ++i) {
+total += this.dataStore[i];
+}
+return total / this.dataStore.length;
+}
+var thisWeek = new weekTemps();
+thisWeek.add(52);
+thisWeek.add(55);
+thisWeek.add(61);
+thisWeek.add(65);
+thisWeek.add(55);
+thisWeek.add(50);
+thisWeek.add(52);
+thisWeek.add(49);
+console.log(thisWeek.average());
 
 

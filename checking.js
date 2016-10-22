@@ -1,5 +1,5 @@
-function checking() {
-    this.balance = 10000;
+function checking(balance) {
+    this.balance = balance;
 }
 
 checking.prototype.deposit= function() {
