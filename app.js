@@ -1,10 +1,13 @@
-var queue = require ('./queue');
-var Queue = new queue();
 
-Queue.enqueue("postfix");
-Queue.enqueue("expression");
-Queue.enqueue("arithmetic");
-Queue.enqueue("dispenser");
+var LinkedList = require('./linkedlist');
+var LList = new LinkedList();
 
-console.log(Queue.display());
+LList.insert("Milk", "head");
+LList.insert("Bread", "Milk");
+LList.insert("Eggs", "Bread");
+LList.insert("Bacon", "Eggs");
+LList.insert("cookies", "Eggs");
 
+LList.display();
+LList.remove("Bread");
+LList.display();
