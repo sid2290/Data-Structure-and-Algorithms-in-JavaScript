@@ -1,12 +1,9 @@
-var LinkedList = require('./doublyLinkedlist');
-var LList = new LinkedList();
+var Dictionary = require('./dictionary');
+var dictionary = new Dictionary();
 
-LList.insert("Milk", "head");
-LList.insert("Bread", "Milk");
-LList.insert("Eggs", "Bread");
-LList.insert("Bacon", "Eggs");
-LList.insert("cookies", "Eggs");
-
-LList.display();
-LList.remove("Bread");
-LList.displayRev();
+console.log(dictionary);
+dictionary.add("name","Sid");
+dictionary.add("name","Jaspal");
+//dictionary.display();
+console.log(dictionary);
+console.log(dictionary.datastore);
