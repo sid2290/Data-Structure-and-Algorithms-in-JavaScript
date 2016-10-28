@@ -13,20 +13,23 @@ function LList() {
             var newNode = new node(newElement);
             var current = this.find(item);
             newNode.next = current.next;
+            newNode.previous = current;
             current.next = newNode;
     };
-    this.findPrevious= function (item) {
+    this.findLast= function (item) {
             var currNode = this.head;
-            while (!(currNode.next == null) &&
-            (currNode.next.element != item)) {
+            while (!(currNode.next == null)) {
                 currNode = currNode.next;
             }
             return currNode;
-    };
+        };
    this.remove = function (remElement) {
-            var prevNode = this.findPrevious(remElement);
-            if (!(prevNode.next == null)) {
-                prevNode.next = prevNode.next.next;
+            var currNode = this.find(remElement);
+            if (!(currNode.next == null)) {
+                currNode.previous.next = currNode.next;
+                currNode.next.previous = currNode.previous;
+                currNode.next = null;
+                currNode.previous = null;
             }
             
     };
@@ -37,6 +40,15 @@ function LList() {
             currNode = currNode.next;
         }
     };
-}
+
+    this.displayRev =  function () {
+        var currNode = this.head;
+        var currNode = this.findLast();
+        while (!(currNode.previous == null)) {
+            console.log(currNode.element);
+            currNode = currNode.previous;
+        }
+    }
+};
 
 module.exports = LList;

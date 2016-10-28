@@ -1,5 +1,4 @@
-
-var LinkedList = require('./linkedlist');
+var LinkedList = require('./doublyLinkedlist');
 var LList = new LinkedList();
 
 LList.insert("Milk", "head");
@@ -10,4 +9,4 @@ LList.insert("cookies", "Eggs");
 
 LList.display();
 LList.remove("Bread");
-LList.display();
+LList.displayRev();
