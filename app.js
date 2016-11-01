@@ -1,9 +1,9 @@
-var Dictionary = require('./dictionary');
-var dictionary = new Dictionary();
+var HashTable = require('./hashtable');
+var hashTable = new HashTable();
 
-console.log(dictionary);
-dictionary.add("name","Sid");
-dictionary.add("name","Jaspal");
-//dictionary.display();
-console.log(dictionary);
-console.log(dictionary.datastore);
+hashTable.put("Sid");
+hashTable.put("Jaspal");
+hashTable.put("class");
+hashTable.display();
+
+
